@@ -1,0 +1,73 @@
+﻿CREATE TABLE Kupac(
+KupacId nvarchar(450) NOT NULL PRIMARY KEY,
+Ime nvarchar(30) NOT NULL,
+Prezime nvarchar(30) NOT NULL,
+Drzava nvarchar(30) NOT NULL DEFAULT 'BiH',
+Grad nvarchar(30) NOT NULL DEFAULT 'Sarajevo',
+Adresa nvarchar(100) NOT NULL
+);
+INSERT INTO Kupac(KupacId, Ime, Prezime, Adresa) VALUES('Kupac001','Lana','Kisic','Glavna
+5');
+INSERT INTO Kupac(KupacId, Ime, Prezime, Adresa)
+VALUES('Kupac002','Adnan','Fejzic','Vrbaska 28');
+--SELECT * FROM Kupac;
+CREATE TABLE Porudzbina(
+PorudzbinaId int IDENTITY(1,1) PRIMARY KEY,
+KupacId nvarchar(450) NOT NULL FOREIGN KEY REFERENCES Kupac(KupacId),
+DatumKupovine datetime NOT NULL DEFAULT GETDATE()
+);
+INSERT INTO Porudzbina(KupacId) VALUES('Kupac001');
+INSERT INTO Porudzbina(KupacId) VALUES('Kupac002');
+ --SELECT * FROM Porudzbina;
+CREATE TABLE Proizvod(
+ProizvodId int IDENTITY(1,1) PRIMARY KEY,
+Kategorija nvarchar(100) NULL,
+Naziv nvarchar(100) NULL,
+Opis nvarchar(100) NULL,
+Cijena decimal(10, 2) NOT NULL
+);
+INSERT INTO Proizvod (Cijena, Kategorija, Naziv, Opis) VALUES (CAST(34275.00 AS Decimal(10,
+2)), 'Tenis', 'Reket', 'Grafitni reket 290gr')
+INSERT INTO Proizvod (Cijena, Kategorija, Naziv, Opis) VALUES (CAST(2348.95 AS Decimal(10,
+2)), 'Tenis', 'Loptice', 'Willson loptice 50 komada')
+INSERT INTO Proizvod (Cijena, Kategorija, Naziv, Opis) VALUES (CAST(1111.95 AS Decimal(10,
+2)), 'Tenis', 'Znojnik', 'Znojnik za glavu')
+INSERT INTO Proizvod (Cijena, Kategorija, Naziv, Opis) VALUES (CAST(5348.95 AS Decimal(10,
+2)), 'Tenis', 'Patike', 'Willson patike')
+
+INSERT INTO Proizvod (Cijena, Kategorija, Naziv, Opis) VALUES (CAST(3459.50 AS Decimal(10,
+2)), 'Fudbal', 'Fudbalska lopta', 'FIFA-oficijelna tezina i dimenzije')
+INSERT INTO Proizvod (Cijena, Kategorija, Naziv, Opis) VALUES (CAST(1234.95 AS Decimal(10,
+2)), 'Fudbal', 'Korner zastava', 'Zastava za obelezavanje kornera')
+INSERT INTO Proizvod (Cijena, Kategorija, Naziv, Opis) VALUES (CAST(4795.00 AS Decimal(10,
+2)),'Fudbal', 'Dres', 'Teget beli dres sa oznakom tima')
+INSERT INTO Proizvod (Cijena, Kategorija, Naziv, Opis) VALUES (CAST(8995.00 AS Decimal(10,
+2)),'Fudbal', 'Kopacke', 'Muske kopacke')
+
+INSERT INTO Proizvod (Cijena, Kategorija, Naziv, Opis) VALUES (CAST(1687.00 AS Decimal(10,
+2)), 'Kosarka', 'Lopta', 'Jordan lopta')
+INSERT INTO Proizvod (Cijena, Kategorija, Naziv, Opis) VALUES (CAST(1687.00 AS Decimal(10,
+2)), 'Kosarka', 'Kos', 'Kos za kosarku')
+INSERT INTO Proizvod (Cijena, Kategorija, Naziv, Opis) VALUES (CAST(1687.00 AS Decimal(10,
+2)), 'Kosarka', 'Patike', 'Jordan patike')
+
+INSERT INTO Proizvod (Cijena, Kategorija, Naziv, Opis) VALUES (CAST(1687.00 AS Decimal(10,
+2)), 'Sah', 'Sat za merenje vremena', 'Meri vreme izmedju poteza')
+INSERT INTO Proizvod (Cijena, Kategorija, Naziv, Opis) VALUES (CAST(2934.95 AS Decimal(10,
+2)), 'Sah', 'Stolica za sah', 'Udobna stolica za sah')
+INSERT INTO Proizvod (Cijena, Kategorija, Naziv, Opis) VALUES (CAST(1867.00 AS Decimal(10,
+2)), 'Sah', 'Sahovska tabla', ' Sahovska tabla za celu porodicu')
+INSERT INTO Proizvod (Cijena, Kategorija, Naziv, Opis) VALUES (CAST(1245.00 AS Decimal(10,
+2)), 'Sah', 'Pozlaceni kralj', 'Pozlacena figura kralj')
+ --SELECT * FROM Proizvod;
+CREATE TABLE Stavka(
+StavkaId int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+PorudzbinaId int NOT NULL FOREIGN KEY REFERENCES Porudzbina(PorudzbinaId) ,
+ProizvodId int NOT NULL FOREIGN KEY REFERENCES Proizvod(ProizvodId),
+Kolicina int NOT NULL
+);
+INSERT Stavka ( Kolicina, PorudzbinaId, ProizvodId) VALUES ( 2, 1, 1)
+INSERT Stavka ( Kolicina, PorudzbinaId, ProizvodId) VALUES ( 1, 1, 2)
+INSERT Stavka ( Kolicina, PorudzbinaId, ProizvodId) VALUES ( 1, 2, 2)
+INSERT Stavka ( Kolicina, PorudzbinaId, ProizvodId) VALUES ( 1, 2, 3)
+ --SELECT * FROM Stavka

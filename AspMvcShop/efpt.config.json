@@ -1,0 +1,40 @@
+﻿{
+   "ContextClassName": "WebshopContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": true,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models",
+   "ProjectRootNamespace": "AspMvcShop",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[dbo].[Kupac]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Porudzbina]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Proizvod]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Stavka]",
+         "ObjectType": 0
+      }
+   ],
+   "UseDatabaseNames": true,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseNodaTime": false,
+   "UseSpatial": false
+}
